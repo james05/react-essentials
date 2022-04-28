@@ -5,7 +5,7 @@ import './App.css';
 import React, { useReducer } from "react";
 import { useState, useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
-import { Home, About, Events, Contact, Error404 } from "./Pages";
+import { Home, About, Events, Contact, Error404, Services, History } from "./Pages";
 
 const dishes = [
   "Macaroni and Cheese",
@@ -102,7 +102,10 @@ function App({ login }) {
       <div>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />}/>  
+          <Route path="/about" element={<About />}>
+            <Route path="history" element={<History />} />
+            <Route path="services" element={<Services />} />
+          </Route>  
           <Route path="/events" element={<Events />}/>  
           <Route path="/contact" element={<Contact />}/>  
           <Route path="*" element={<Error404 />} />
