@@ -4,6 +4,8 @@ import Footer from "./Footer";
 import './App.css';
 import React, { useReducer } from "react";
 import { useState, useEffect } from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import { Home, About, Events, Contact, Error404 } from "./Pages";
 
 const dishes = [
   "Macaroni and Cheese",
@@ -89,6 +91,23 @@ function App({ login }) {
       <>
         {content}
       </>
+
+      <nav>
+        <Link to="">Home</Link>
+        <Link to="about">About</Link>
+        <Link to="events">Events</Link>
+        <Link to="contact">Contact</Link>
+      </nav>
+
+      <div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />}/>  
+          <Route path="/events" element={<Events />}/>  
+          <Route path="/contact" element={<Contact />}/>  
+          <Route path="*" element={<Error404 />} />
+        </Routes>
+      </div>
     </>
   );
 }
